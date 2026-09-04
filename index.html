@@ -1,13 +1,234 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gas El Volcán - Distribución a Domicilio en Chillán</title>
+
+  <!-- NOTA Se mantiene la ruta exacta a assets/css/style.css donde Tailwind compila la hoja de estilos externa-->
   <link href="./assets/css/style.css" rel="stylesheet">
+
+  <!-- Iconos auxiliares para replicar el estilo de la interfaz de Lipigas(referencia visual) -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
-<body>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+
+<!-- NOTA Inicio la página con <header> y <nav> obligatorios para la estructura semántica(que sea descriptivo). -->
+<header class="w-full">
+  <!-- Barra superior de teléfonos y emergencias -->
+  <div class="bg-blue-950 text-white text-xs py-2 px-4 flex flex-wrap justify-between items-center gap-2">
+    <div class="flex items-center gap-4">
+      <span class="font-semibold text-yellow-400">Distribuidora Gas El Volcán</span>
+      <span class="hidden sm:inline">| Chillán y comunas aledañas</span>
+    </div>
+    <div class="flex items-center gap-6">
+      <a href="tel:6006009200" class="hover:underline flex items-center gap-1">
+        <i class="ph ph-warning-circle"></i> Emergencias: 600 600 9200
+      </a>
+      <a href="tel:6005006000" class="hover:underline flex items-center gap-1">
+        <i class="ph ph-phone"></i> Servicio cliente: 600 500 6000
+      </a>
+    </div>
+  </div>
+
+  <!-- Menú de navegación principal con responsive -->
+  <nav class="bg-white shadow-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+
+      <!-- Logo de la empresa -->
+      <a href="./index.html" class="flex items-center gap-2">
+        <div class="bg-yellow-400 p-2 rounded-xl text-blue-950 font-black text-xl flex items-center">
+          <i class="ph ph-flame-fill text-2xl mr-1"></i> VOLCÁN
+        </div>
+      </a>
+
+      <!-- NOTA (Responsive >=1280px)Oculto enlaces en pantallas pequeñas -->
+      <div class="hidden lg:flex items-center space-x-8 font-medium text-slate-700">
+        <a href="./index.html" class="text-blue-900 border-b-2 border-yellow-400 pb-1 font-bold">Inicio</a>
+        <a href="#pedidos" class="hover:text-blue-900 transition">Pide tu Cilindro</a>
+        <a href="#productos" class="hover:text-blue-900 transition">Cilindros</a>
+        <a href="#nosotros" class="hover:text-blue-900 transition">Nosotros</a>
+      </div>
+
+      <!-- Acceso a Sucursal Virtual / Login -->
+      <div class="hidden sm:flex items-center gap-4">
+        <a href="./admin/login.html" class="bg-yellow-400 hover:bg-yellow-500 text-blue-950 font-bold px-5 py-2.5 rounded-full transition flex items-center gap-2 shadow-sm">
+          <i class="ph ph-user-circle text-xl"></i> Sucursal Virtual
+        </a>
+      </div>
+
+      <!-- NOTA (Responsive >=360px) Botón tipo hamburguesa para celulares -->
+      <button id="btn-menu-mobi" class="lg:hidden p-2 text-slate-700 hover:text-blue-900 focus:outline-none" aria-label="Abrir menú">
+        <i class="ph ph-list text-3xl"></i>
+      </button>
+    </div>
+
+    <!-- Menu desplegable para celulares (Controlado por JavaScript) -->
+    <div id="menu-mobi" class="hidden lg:hidden bg-slate-100 border-t border-slate-200 px-4 pt-2 pb-4 space-y-2">
+      <a href="./index.html" class="block py-2 font-bold text-blue-900">Inicio</a>
+      <a href="#pedidos" class="block py-2 text-slate-700">Pide tu Cilindro</a>
+      <a href="#productos" class="block py-2 text-slate-700">Cilindros</a>
+      <a href="./admin/login.html" class="block py-2 text-yellow-600 font-bold">Sucursal Virtual (Login)</a>
+    </div>
+  </nav>
+</header>
+
+<!-- NOTA To do el contenido central va dentro de <main>-->
+<main class="flex-grow">
+
+  <!-- ofrmulario Rápido similar a la referencia visual (Lipigas)-->
+  <section id="pedidos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+      <!-- Tarjeta del Formulario (Izquierda) -->
+      <div class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100">
+        <div class="flex border-b border-slate-200 mb-6 gap-2">
+          <button type="button" class="pb-3 border-b-4 border-yellow-400 font-bold text-blue-950 text-sm sm:text-base flex items-center gap-2">
+            <i class="ph ph-gas-can text-lg"></i> Pide tu cilindro
+          </button>
+        </div>
+
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-blue-950 mb-2">Pide tu cilindro aquí</h1>
+        <p class="text-slate-600 text-sm mb-6">Ingresa tus datos para gestionar el despacho a domicilio en Chillán.</p>
+
+        <!-- NOTA (Validación JS)Los id "form-pedido-express", "input-celular" y "select-cilindro" son capturados por JS para validar-->
+        <form id="form-pedido-express" novalidate class="space-y-4">
+          <div>
+            <label for="input-celular" class="block text-sm font-semibold text-slate-700 mb-1">¿Cuál es tu celular?</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-500 font-bold text-sm">+56 9</span>
+              <input type="tel" id="input-celular" name="celular" autocomplete="tel" placeholder="1234 5678"
+                     class="w-full pl-16 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none text-slate-800 font-medium">
+            </div>
+            <span class="text-xs text-slate-400 mt-1 block">Ej: 987654321</span>
+            <!-- Párrafo dinámico para inyectar error contextual con JavaScript -->
+            <p id="error-celular" class="text-red-500 text-xs font-semibold mt-1 hidden"></p>
+          </div>
+
+          <div>
+            <label for="select-cilindro" class="block text-sm font-semibold text-slate-700 mb-1">Tipo de Cilindro</label>
+            <select id="select-cilindro" name="cilindro" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-yellow-400 outline-none text-slate-800 font-medium bg-white">
+              <option value="">Selecciona el formato...</option>
+              <option value="5kg">Cilindro 5 kg</option>
+              <option value="11kg">Cilindro 11 kg</option>
+              <option value="15kg">Cilindro 15 kg</option>
+            </select>
+            <p id="error-cilindro" class="text-red-500 text-xs font-semibold mt-1 hidden"></p>
+          </div>
+
+          <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-950 font-extrabold py-3.5 rounded-full transition shadow-md text-center">
+            Continuar
+          </button>
+        </form>
+      </div>
+
+      <!-- Banner publicitario de apoyo (Derecha) -->
+      <div class="lg:col-span-7 bg-gradient-to-br from-blue-900 to-blue-950 text-white rounded-3xl p-8 lg:p-12 shadow-xl flex flex-col justify-between min-h-[380px] relative overflow-hidden">
+        <div class="z-10 max-w-lg">
+          <span class="bg-yellow-400 text-blue-950 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wider mb-4 inline-block">Servicio Local Chillán</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight mb-4">
+            Distribución rápida directamente a tu hogar
+          </h2>
+          <p class="text-blue-100 text-base mb-6">
+            Monitorea el trayecto del camión repartidor en tiempo real y realiza tu pago en efectivo o transferencia al recibir tu carga.
+          </p>
+          <a href="#nosotros" class="inline-flex items-center gap-2 border-2 border-white hover:bg-white hover:text-blue-950 text-white font-bold px-6 py-3 rounded-full transition">
+            Conoce más aquí <i class="ph ph-arrow-right"></i>
+          </a>
+        </div>
+        <i class="ph ph-flame text-yellow-400/10 text-[220px] absolute -right-10 -bottom-10 pointer-events-none"></i>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NOTA (Estructura) Uso <section> y <article> para empaquetar los productos según pauta HTML5 -->
+  <section id="productos" class="bg-slate-100 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-blue-950 text-center mb-8">Nuestros Formatos de Gas Licuado</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 text-center flex flex-col items-center">
+          <div class="bg-yellow-100 text-yellow-700 p-4 rounded-full mb-4">
+            <i class="ph ph-gas-can text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-blue-950 mb-1">Cilindro 5 kg</h3>
+          <p class="text-slate-500 text-sm mb-4">Ideal para estufas pequeñas, cocinillas y camping.</p>
+          <span class="text-2xl font-black text-blue-900 mb-4">$10.500</span>
+        </article>
+
+        <article class="bg-white p-6 rounded-2xl shadow-sm border-2 border-yellow-400 text-center flex flex-col items-center relative">
+          <span class="absolute -top-3 bg-yellow-400 text-blue-950 text-xs font-bold px-3 py-1 rounded-full uppercase">Más Vendido</span>
+          <div class="bg-yellow-100 text-yellow-700 p-4 rounded-full mb-4">
+            <i class="ph ph-gas-can text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-blue-950 mb-1">Cilindro 11 kg</h3>
+          <p class="text-slate-500 text-sm mb-4">El formato preferido para el consumo residencial cotidiano.</p>
+          <span class="text-2xl font-black text-blue-900 mb-4">$18.200</span>
+        </article>
+
+        <article class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 text-center flex flex-col items-center">
+          <div class="bg-yellow-100 text-yellow-700 p-4 rounded-full mb-4">
+            <i class="ph ph-gas-can text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-blue-950 mb-1">Cilindro 15 kg</h3>
+          <p class="text-slate-500 text-sm mb-4">Rendimiento extendido para calefacción y hogar numeroso.</p>
+          <span class="text-2xl font-black text-blue-900 mb-4">$24.900</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTA (Pauta IE1.1.1) Incluyo iframe con video embebido obligatoriamente para la pauta -->
+  <section id="nosotros" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-blue-950 mb-4">Sobre Distribuidora El Volcán</h2>
+        <p class="text-slate-600 mb-4 leading-relaxed">
+          Desde 1998 servimos a la comunidad de Chillán garantizando entregas puntuales. Nuestra flota de camiones y equipo de reparto opera diariamente para cubrir tus necesidades de gas licuado.
+        </p>
+        <ul class="space-y-2 text-slate-700 font-medium">
+          <li class="flex items-center gap-2"><i class="ph ph-check-circle-fill text-yellow-500 text-xl"></i> Cobertura total en la comuna de Chillán.</li>
+          <li class="flex items-center gap-2"><i class="ph ph-check-circle-fill text-yellow-500 text-xl"></i> Inspección y sellado de seguridad en cada cilindro.</li>
+        </ul>
+      </div>
+
+      <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+        <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="Video Gas El Volcán" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- NOTA (Pauta IE1.1.1) Cierre de página mediante <footer> informativo-->
+<footer class="bg-blue-950 text-white pt-10 pb-6 border-t-4 border-yellow-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+    <div>
+      <div class="flex items-center gap-2 font-black text-xl text-yellow-400 mb-3">
+        <i class="ph ph-flame-fill text-2xl"></i> GAS EL VOLCÁN
+      </div>
+      <p class="text-slate-300 text-sm">Distribución a domicilio de gas licuado en Chillán y alrededores, Región de Ñuble.</p>
+    </div>
+    <div>
+      <h4 class="font-bold text-yellow-400 mb-3">Contacto</h4>
+      <p class="text-slate-300 text-sm">Ubicación: Av. Libertad 123, Chillán</p>
+      <p class="text-slate-300 text-sm">Mesa central: +56 42 222 3344</p>
+    </div>
+    <div>
+      <h4 class="font-bold text-yellow-400 mb-3">Navegación</h4>
+      <ul class="text-slate-300 text-sm space-y-1">
+        <li><a href="./index.html" class="hover:underline">Inicio</a></li>
+        <li><a href="./admin/login.html" class="hover:underline">Acceso Interno (Operadora / Repartidor)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="text-center text-xs text-slate-400 pt-4 border-t border-blue-900">
+    &copy; 2026 Distribuidora de Gas El Volcán S.A. - Evaluación Parcial N° 1 DSY1104
+  </div>
+</footer>
+
+<!-- NOTA (Scripts): Enlace al script JS de validación ubicado en la carpeta assets/js/ -->
+<script src="./assets/js/main.js"></script>
 </body>
 </html>
