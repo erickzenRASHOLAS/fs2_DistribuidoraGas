@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 msgErrorBox.classList.add('hidden');
                 alert('¡Bienvenido, Administrador! Redirigiendo a tu panel...');
 
+                //el ".." SOLO por ahora, luego debe ser el del usuario
+                window.location.href = "../perfil.html";
+
                 // Aquí iría la redirección real, por ejemplo:
                 // window.location.href = 'dashboard.html';
             } else {
