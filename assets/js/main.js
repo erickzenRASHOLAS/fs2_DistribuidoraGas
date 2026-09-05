@@ -51,11 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 esValido = false;
             }
 
-            //RESULTADO DE LA VALIDACIÓN
+            // RESULTADO DE LA VALIDACIÓN
             if (esValido) {
-                // NOTA Si no hay errores aquí se procesa la solicitud o se envía a la siguiente pantalla.
                 alert(`¡Pedido recibido con éxito!\nTeléfono: +56 9 ${valorCelular}\nCilindro seleccionado: ${selectCilindro.value}`);
                 formPedido.reset();
+                window.location.href = "./pedido.html";
             }
         });
     }
