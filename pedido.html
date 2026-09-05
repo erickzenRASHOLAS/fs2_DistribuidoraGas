@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Pedido - Gas El Volcán</title>
+
+    <!-- NOTA: Se mantiene la misma ruta al CSS compilado de Tailwind ya que este archivo está en la raíz, igual que el index.html-->
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <!--Se carga una libreria de iconos de internet-->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+
+<!-- NOTA: Reutilizo el <header> y <nav> del index para mantener consistencia y cumplir con la semántica HTML5 -->
+<header class="w-full">
+    <nav class="bg-white shadow-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <a href="./index.html" class="flex items-center gap-2">
+                <div class="bg-yellow-400 p-2 rounded-xl text-blue-950 font-black text-xl flex items-center">
+                    <i class="ph ph-flame-fill text-2xl mr-1"></i> VOLCÁN
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-slate-700">
+                <a href="./index.html" class="hover:text-blue-900 transition">Inicio</a>
+                <!-- NOTA: Este enlace ahora marca la página actual como activa con el borde amarillo -->
+                <a href="./pedido.html" class="text-blue-900 border-b-2 border-yellow-400 pb-1 font-bold">Pide tu Cilindro</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="flex-grow flex items-center justify-center p-4 sm:p-8">
+    <section class="bg-white w-full max-w-2xl rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-10">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-extrabold text-blue-950 mb-2">Detalle de tu Pedido</h1>
+            <p class="text-slate-600">Completa los datos para despachar tu gas a domicilio en Chillán.</p>
+        </div>
+
+        <!-- NOTA: El formulario usa 'novalidate' para apagar las alertas por defecto del navegador y usar mis propias alertas con JS -->
+        <form id="form-crear-pedido" class="space-y-6" novalidate>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                    <label for="input-nombre" class="block text-sm font-bold text-slate-700 mb-1">Nombre Completo</label>
+                    <input type="text" id="input-nombre" placeholder="Ej: Juan Pérez"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-yellow-400 outline-none font-medium">
+                </div>
+                <div>
+                    <label for="input-tel" class="block text-sm font-bold text-slate-700 mb-1">Teléfono</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-500 font-bold text-sm">+56 9</span>
+                        <input type="tel" id="input-tel" placeholder="1234 5678"
+                               class="w-full pl-14 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-yellow-400 outline-none font-medium">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label for="input-direccion" class="block text-sm font-bold text-slate-700 mb-1">Dirección de Despacho</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400"><i class="ph ph-map-pin text-xl"></i></span>
+                    <input type="text" id="input-direccion" placeholder="Ej: Av. Brasil 456, Depto 12"
+                           class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-yellow-400 outline-none font-medium">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                <div>
+                    <label for="select-tipo-gas" class="block text-sm font-bold text-slate-700 mb-1">Formato</label>
+                    <select id="select-tipo-gas" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-yellow-400 outline-none bg-white font-medium">
+                        <option value="">Selecciona...</option>
+                        <option value="5kg">Cilindro 5 kg</option>
+                        <option value="11kg">Cilindro 11 kg</option>
+                        <option value="15kg">Cilindro 15 kg</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="input-cantidad" class="block text-sm font-bold text-slate-700 mb-1">Cantidad</label>
+                    <input type="number" id="input-cantidad" min="1" max="10" value="1"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-yellow-400 outline-none font-medium text-center">
+                </div>
+            </div>
+
+            <!-- Contenedor dinámico de errores -->
+            <div id="pedido-error" class="hidden bg-red-50 text-red-600 text-sm font-semibold p-3 rounded-lg flex items-start gap-2 border border-red-200">
+                <i class="ph ph-warning-circle text-lg mt-0.5"></i>
+                <span id="pedido-error-text">Error en el formulario.</span>
+            </div>
+
+            <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-950 font-extrabold py-4 rounded-full transition shadow-md flex justify-center items-center gap-2 text-lg">
+                Confirmar Pedido <i class="ph ph-check-circle text-xl"></i>
+            </button>
+        </form>
+    </section>
+</main>
+
+<footer class="bg-blue-950 text-slate-400 text-center py-6 text-sm border-t-4 border-yellow-400">
+    &copy; 2026 Gas El Volcán S.A.
+</footer>
+
+<!-- NOTA: Vinculo un nuevo script JS específico para esta vista, que debo crear en la carpeta assets/js/ -->
+<script src="./assets/js/pedido.js"></script>
+</body>
+</html>
