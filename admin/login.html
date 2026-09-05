@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Sucursal Virtual - Gas El Volcán</title>
+
+    <!-- NOTA Al estar en la carpeta admin/, subo un nivel (../) para encontrar la ruta de assets -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="bg-slate-100 flex items-center justify-center min-h-screen p-4 font-sans text-slate-800">
+
+<!-- Contenedor principal centrado -->
+<main class="bg-white w-full max-w-md rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+
+    <!-- Cabecera de la tarjeta -->
+    <div class="bg-blue-950 p-8 text-center border-b-4 border-yellow-400">
+        <a href="../index.html" class="inline-flex items-center justify-center bg-yellow-400 p-3 rounded-2xl text-blue-950 mb-4 transition hover:scale-105">
+            <i class="ph ph-flame-fill text-3xl"></i>
+        </a>
+        <h1 class="text-2xl font-extrabold text-white">Sucursal Virtual</h1>
+        <p class="text-blue-200 text-sm mt-1">Acceso exclusivo personal autorizado</p>
+    </div>
+
+    <!-- Formulario -->
+    <div class="p-8">
+        <form id="form-login" class="space-y-5" novalidate>
+
+            <!-- Campo Usuario -->
+            <div>
+                <label for="input-usuario" class="block text-sm font-bold text-slate-700 mb-1">Usuario</label>
+                <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+              <i class="ph ph-user text-xl"></i>
+            </span>
+                    <input type="text" id="input-usuario" placeholder="Ingresa tu usuario"
+                           class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-yellow-400 outline-none font-medium transition">
+                </div>
+            </div>
+
+            <!-- Campo Contraseña -->
+            <div>
+                <label for="input-password" class="block text-sm font-bold text-slate-700 mb-1">Contraseña</label>
+                <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+              <i class="ph ph-lock-key text-xl"></i>
+            </span>
+                    <input type="password" id="input-password" placeholder="••••••••"
+                           class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-yellow-400 outline-none font-medium transition">
+                </div>
+            </div>
+
+            <!-- Mensaje de error dinámico -->
+            <div id="login-error" class="hidden bg-red-50 text-red-600 text-sm font-semibold p-3 rounded-lg flex items-start gap-2 border border-red-200">
+                <i class="ph ph-warning-circle text-lg mt-0.5"></i>
+                <span id="login-error-text">Credenciales incorrectas.</span>
+            </div>
+
+            <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-950 font-extrabold py-3.5 rounded-full transition shadow-md mt-2 flex justify-center items-center gap-2">
+                Ingresar <i class="ph ph-sign-in text-lg"></i>
+            </button>
+
+            <div class="text-center mt-4">
+                <a href="../index.html" class="text-sm text-slate-500 hover:text-blue-900 font-medium hover:underline">
+                    Volver al inicio
+                </a>
+            </div>
+        </form>
+    </div>
+</main>
+
+<!-- Script específico para el login -->
+<script src="../assets/js/login.js"></script>
+</body>
+</html>
