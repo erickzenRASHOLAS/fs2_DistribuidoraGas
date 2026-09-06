@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Pedidos - Gas El Volcán</title>
+
+    <!-- NOTA: Mantengo la misma ruta al CSS de Tailwind compilado. -->
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+
+<!-- NOTA: Actualicé el menú para incluir la pestaña "Mis Pedidos". Debes copiar este mismo <nav> en index.html y pedido.html para que todos tengan los mismos enlaces. -->
+<header class="w-full">
+    <nav class="bg-white shadow-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <a href="./index.html" class="flex items-center gap-2">
+                <div class="bg-yellow-400 p-2 rounded-xl text-blue-950 font-black text-xl flex items-center">
+                    <i class="ph ph-flame-fill text-2xl mr-1"></i> VOLCÁN
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-slate-700">
+                <a href="./index.html" class="hover:text-blue-900 transition">Inicio</a>
+                <a href="./pedido.html" class="hover:text-blue-900 transition">Pide tu Cilindro</a>
+                <!-- Enlace activo -->
+                <a href="./mis-pedidos.html" class="text-blue-900 border-b-2 border-yellow-400 pb-1 font-bold">Mis Pedidos</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="flex-grow max-w-4xl mx-auto w-full p-4 sm:p-8">
+    <div class="mb-8 flex justify-between items-end">
+        <div>
+            <h1 class="text-3xl font-extrabold text-blue-950 mb-2">Mis Pedidos</h1>
+            <p class="text-slate-600">Revisa el historial y estado de tus compras.</p>
+        </div>
+        <a href="./pedido.html" class="hidden sm:flex bg-yellow-400 hover:bg-yellow-500 text-blue-950 font-bold py-2 px-4 rounded-xl transition shadow-sm items-center gap-2">
+            Nuevo Pedido <i class="ph ph-plus-circle text-lg"></i>
+        </a>
+    </div>
+
+    <!-- NOTA: Este contenedor <div> es donde el JavaScript inyectará las tarjetas de los pedidos simulados. -->
+    <div id="contenedor-pedidos" class="space-y-4">
+        <!-- Los pedidos cargan dinámicamente aquí -->
+    </div>
+</main>
+
+<footer class="bg-blue-950 text-slate-400 text-center py-6 text-sm border-t-4 border-yellow-400 mt-auto">
+    &copy; 2026 Gas El Volcán S.A.
+</footer>
+
+<!-- NOTA: Script específico para inyectar los datos estáticos -->
+<script src="./assets/js/mis-pedidos.js"></script>
+</body>
+</html>
