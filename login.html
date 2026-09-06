@@ -6,7 +6,7 @@
     <title>Acceso Sucursal Virtual - Gas El Volcán</title>
 
     <!-- NOTA Al estar en la carpeta admin/, subo un nivel (../) para encontrar la ruta de assets -->
-    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body class="bg-slate-100 flex items-center justify-center min-h-screen p-4 font-sans text-slate-800">
@@ -16,7 +16,7 @@
 
     <!-- Cabecera de la tarjeta -->
     <div class="bg-blue-950 p-8 text-center border-b-4 border-yellow-400">
-        <a href="../index.html" class="inline-flex items-center justify-center bg-yellow-400 p-3 rounded-2xl text-blue-950 mb-4 transition hover:scale-105">
+        <a href="index.html" class="inline-flex items-center justify-center bg-yellow-400 p-3 rounded-2xl text-blue-950 mb-4 transition hover:scale-105">
             <i class="ph ph-flame-fill text-3xl"></i>
         </a>
         <h1 class="text-2xl font-extrabold text-white">Sucursal Virtual</h1>
@@ -60,9 +60,13 @@
             <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-950 font-extrabold py-3.5 rounded-full transition shadow-md mt-2 flex justify-center items-center gap-2">
                 Ingresar <i class="ph ph-sign-in text-lg"></i>
             </button>
+            <div class="mt-6 text-center text-sm">
+                <span class="text-slate-500">¿No tienes Cuenta?</span>
+                <a href="./registro.html" class="text-blue-600 font-bold hover:underline">Registrate Aqui</a>
+            </div>
 
             <div class="text-center mt-4">
-                <a href="../perfil.html" class="text-sm text-slate-500 hover:text-blue-900 font-medium hover:underline">
+                <a href="index.html" class="text-sm text-slate-500 hover:text-blue-900 font-medium hover:underline">
                     Volver al inicio
                 </a>
             </div>
@@ -71,6 +75,6 @@
 </main>
 
 <!-- Script específico para el login -->
-<script src="../assets/js/login.js"></script>
+<script src="assets/js/login.js"></script>
 </body>
 </html>
