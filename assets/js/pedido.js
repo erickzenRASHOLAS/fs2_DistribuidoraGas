@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // NOTA: Si pasa todas las validaciones (if), el flujo llega hasta aquí.
             alert(`¡Pedido confirmado, ${nombre}!\nSe despacharán ${cantidad} cilindro(s) de ${tipoGas} a la dirección:\n${direccion}.`);
             formPedido.reset();
+            window.location.href = './mis-pedidos.html'
 
             // Opcional: Redirigir al inicio tras pedir
             // window.location.href = './index.html';

@@ -69,8 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
             elementoHTML.classList.remove('hidden');
         }
     }
-
-    // NOTA Vuelve a ocultar el <p> de error limpiando su contenido.
     function limpiarError(elementoHTML) {
         if (elementoHTML) {
             elementoHTML.textContent = '';
