@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Credenciales correctas Ocultar error (si lo hubiera) y simular redirección
                 msgErrorBox.classList.add('hidden');
                 alert('¡Bienvenido, Administrador! Redirigiendo a tu panel...');
+                window.location.href = '../perfil.html'
 
                 // Aquí iría la redirección real, por ejemplo:
                 // window.location.href = 'dashboard.html';
