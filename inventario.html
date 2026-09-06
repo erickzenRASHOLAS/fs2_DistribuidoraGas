@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario - Gas El Volcán</title>
+
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+
+<header class="w-full">
+    <nav class="bg-white shadow-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <a href="./index.html" class="flex items-center gap-2">
+                <div class="bg-yellow-400 p-2 rounded-xl text-blue-950 font-black text-xl flex items-center">
+                    <i class="ph ph-flame-fill text-2xl mr-1"></i> VOLCÁN
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-slate-700">
+                <a href="./index.html" class="hover:text-blue-900 transition">Inicio</a>
+                <a href="./pedido.html" class="hover:text-blue-900 transition">Pide tu Cilindro</a>
+                <a href="./mis-pedidos.html" class="hover:text-blue-900 transition">Mis Pedidos</a>
+                <a href="./perfil.html" class="hover:text-blue-900 transition">Mi Perfil</a>
+                <!-- NOTA: Añadí este enlace al inventario en el menú para que puedas acceder directamente mientras revisas tu perfil. -->
+                <a href="./inventario.html" class="text-blue-900 border-b-2 border-yellow-400 pb-1 font-bold">Inventario</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="flex-grow max-w-5xl mx-auto w-full p-4 sm:p-8 mt-4">
+    <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+        <div>
+            <h1 class="text-3xl font-extrabold text-blue-950 mb-2">Gestión de Inventario</h1>
+            <p class="text-slate-600">Actualiza el stock disponible de los productos del catálogo.</p>
+        </div>
+        <button id="btn-guardar" class="bg-yellow-400 hover:bg-yellow-500 text-blue-950 font-bold py-3 px-6 rounded-xl transition shadow-sm flex items-center gap-2">
+            <i class="ph ph-floppy-disk text-xl"></i> Guardar Cambios
+        </button>
+    </div>
+
+    <!-- Contenedor dinámico de errores -->
+    <div id="inventario-error" class="hidden mb-6 bg-red-50 text-red-600 text-sm font-semibold p-4 rounded-xl flex items-start gap-2 border border-red-200">
+        <i class="ph ph-warning-circle text-xl"></i>
+        <span id="inventario-error-text">Error en el formulario.</span>
+    </div>
+
+    <!-- NOTA: Usaré una tabla para que la vista sea limpia y propia de un sistema de gestión -->
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                <tr class="bg-blue-950 text-white text-sm uppercase tracking-wider">
+                    <th class="p-4 font-bold">Código</th>
+                    <th class="p-4 font-bold">Categoría</th>
+                    <th class="p-4 font-bold">Producto</th>
+                    <th class="p-4 font-bold">Precio</th>
+                    <th class="p-4 font-bold text-center w-32">Stock Actual</th>
+                </tr>
+                </thead>
+                <tbody id="tabla-inventario" class="divide-y divide-slate-200">
+                <!-- NOTA: El script inyectará las filas de la tabla aquí usando el Excel de referencia -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-blue-950 text-slate-400 text-center py-6 text-sm border-t-4 border-yellow-400 mt-auto">
+    &copy; 2026 Gas El Volcán S.A.
+</footer>
+
+<script src="./assets/js/inventario.js"></script>
+</body>
+</html>
