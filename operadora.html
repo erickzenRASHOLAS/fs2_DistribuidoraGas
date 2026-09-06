@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Operadora - Gas El Volcán</title>
+
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!--ESTO SE LO PEDI A LA IA Y NO ENTIENDO BIEN COMO FUNCIONA-->
+    <!-- NOTA: Importamos Leaflet (CSS y JS) directo desde su CDN para cumplir con el requisito obligatorio del mapa interactivo sin necesidad de backend. -->
+    <!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />-->
+    <!--<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>-->
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+
+<header class="w-full">
+    <nav class="bg-blue-950 shadow-md border-b border-blue-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <a href="#" class="flex items-center gap-2">
+                <div class="bg-yellow-400 p-2 rounded-xl text-blue-950 font-black text-xl flex items-center">
+                    <i class="ph ph-headset text-2xl mr-1"></i> DESPACHO
+                </div>
+            </a>
+            <div class="hidden sm:flex items-center gap-4 text-white">
+                <span class="font-bold text-slate-300">Operadora: Ana Martínez</span>
+                <a href="./index.html" class="text-yellow-400 hover:text-yellow-300 font-bold transition flex items-center gap-2 ml-4">
+                    <i class="ph ph-sign-out text-xl"></i> Salir
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="flex-grow max-w-7xl mx-auto w-full p-4 sm:p-8">
+
+    <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+        <div>
+            <h1 class="text-3xl font-extrabold text-blue-950 mb-2">Panel Central de Despacho</h1>
+            <p class="text-slate-600">Asigna pedidos a los repartidores y monitorea sus rutas en tiempo real.</p>
+        </div>
+    </div>
+
+    <div class="bg-white p-2 rounded-2xl shadow-sm border border-slate-200 mb-8 relative z-0">
+        <img src="https://dicaschile.com.br/wp-content/uploads/sites/13/2023/08/mapa-de-chillan-no-chile.jpg" alt="Mapa estático de Chillán" class="w-full h-150 rounded-xl z-10 object-cover">
+    </div>
+    <!-- Contenedor dinámico de mensajes -->
+    <div id="operadora-msg" class="hidden mb-6 text-sm font-semibold p-4 rounded-xl flex items-start gap-2 border"></div>
+
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="p-4 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+            <h2 class="font-bold text-slate-800 text-lg">Pedidos del Día</h2>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                <tr class="bg-blue-950 text-white text-sm uppercase tracking-wider">
+                    <th class="p-4 font-bold">Orden</th>
+                    <th class="p-4 font-bold">Cliente / Dirección</th>
+                    <th class="p-4 font-bold">Producto</th>
+                    <th class="p-4 font-bold">Estado</th>
+                    <th class="p-4 font-bold">Repartidor Asignado</th>
+                    <th class="p-4 font-bold text-center">Acción</th>
+                </tr>
+                </thead>
+                <tbody id="tabla-pedidos" class="divide-y divide-slate-200">
+                <!-- Las filas se inyectan por JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-blue-950 text-slate-400 text-center py-6 text-sm border-t-4 border-yellow-400 mt-auto">
+    &copy; 2026 Gas El Volcán S.A.
+</footer>
+
+<script src="./assets/js/operadora.js"></script>
+</body>
+</html>
