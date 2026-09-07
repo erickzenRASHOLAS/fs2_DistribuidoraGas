@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios - Admin</title>
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+
+
+<header class="w-full">
+    <nav class="bg-blue-950 shadow-md border-b border-blue-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <a href="#" class="flex items-center gap-2">
+                <div class="bg-yellow-400 p-2 rounded-xl text-blue-950 font-black text-xl flex items-center">
+                    <i class="ph ph-users text-2xl mr-1"></i> USUARIOS
+                </div>
+            </a>
+            <div class="hidden sm:flex items-center gap-4 text-white">
+                <span class="font-bold text-slate-300">Administrador: Admin General</span>
+                <a href="./index.html" class="text-yellow-400 hover:text-yellow-300 font-bold transition flex items-center gap-2 ml-4">
+                    <i class="ph ph-sign-out text-xl"></i> Salir
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<main class="flex-grow max-w-7xl mx-auto w-full p-4 sm:p-8">
+    <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+        <div>
+            <h1 class="text-3xl font-extrabold text-blue-950 mb-2">Gestión de Usuarios</h1>
+            <p class="text-slate-600">Crea, edita, desactiva y asigna roles al personal.</p>
+        </div>
+    </div>
+
+
+    <!-- Contenedor dinámico de mensajes -->
+    <div id="admin-msg" class="hidden mb-6 text-sm font-semibold p-4 rounded-xl flex items-start gap-2 border"></div>
+
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+
+        <!-- Formulario de creación -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 lg:col-span-1 h-fit">
+            <h2 class="font-bold text-slate-800 text-lg mb-4">Nuevo Usuario</h2>
+            <form id="form-usuario" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-1">Nombre Completo</label>
+                    <input type="text" id="nombre-user" class="w-full border border-slate-300 rounded-lg p-2 outline-none focus:ring-2 focus:ring-yellow-400" placeholder="Ej. Juan Pérez">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-1">Rol</label>
+                    <select id="rol-user" class="w-full border border-slate-300 rounded-lg p-2 outline-none focus:ring-2 focus:ring-yellow-400">
+                        <option value="">Seleccione rol...</option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Operadora">Operadora</option>
+                        <option value="Repartidor">Repartidor</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-blue-950 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-lg transition">Crear Usuario</button>
+            </form>
+        </div>
+
+
+        <!-- Tabla de usuarios -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden lg:col-span-2">
+            <div class="p-4 bg-slate-50 border-b border-slate-200">
+                <h2 class="font-bold text-slate-800 text-lg">Usuarios del Sistema</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                    <tr class="bg-slate-100 text-slate-600 text-sm uppercase tracking-wider">
+                        <th class="p-4 font-bold">Nombre</th>
+                        <th class="p-4 font-bold">Rol</th>
+                        <th class="p-4 font-bold">Estado</th>
+                        <th class="p-4 font-bold text-center">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tabla-usuarios" class="divide-y divide-slate-200">
+                    <!-- NOTA: Las filas se inyectan automáticamente desde JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<footer class="bg-blue-950 text-slate-400 text-center py-6 text-sm border-t-4 border-yellow-400 mt-auto">
+    &copy; 2026 Gas El Volcán S.A.
+</footer>
+
+
+<!-- NOTA: Asegúrate de que el nombre del JS aquí sea idéntico al de tu carpeta assets/js -->
+<script src="./assets/js/admin-usuario.js"></script>
+</body>
+</html>
